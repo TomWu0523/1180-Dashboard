@@ -60,6 +60,20 @@ const monthlyTrend = [
   { month: "2026-04", installed: 10 }
 ];
 
+const projectStorageKey = "getinge-1180-projects-v1";
+const projectFields = [
+  "partNumber",
+  "serialNumber",
+  "installProvince",
+  "hospitalName",
+  "channelName",
+  "salesName",
+  "orderDate",
+  "installDate",
+  "acceptanceDate",
+  "warrantyExpireDate"
+];
+
 const formatNumber = new Intl.NumberFormat("zh-CN");
 
 function renderKpis() {
@@ -230,6 +244,184 @@ function latestScatterData() {
   }));
 }
 
+function getStoredProjects() {
+  try {
+    return JSON.parse(localStorage.getItem(projectStorageKey)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function setStoredProjects(projects) {
+  localStorage.setItem(projectStorageKey, JSON.stringify(projects));
+}
+
+function getProjectFormData() {
+  const data = {};
+  projectFields.forEach((field) => {
+    data[field] = document.querySelector(`#${field}`).value.trim();
+  });
+
+  return data;
+}
+
+function setProjectFormData(project = {}) {
+  document.querySelector("#projectId").value = project.id || "";
+  projectFields.forEach((field) => {
+    document.querySelector(`#${field}`).value = project[field] || "";
+  });
+
+  document.querySelector("#formStatus").textContent = project.id
+    ? `正在更新：${project.hospitalName || project.serialNumber}`
+    : "新建项目";
+}
+
+function projectMatchesSearch(project, keyword) {
+  if (!keyword) {
+    return true;
+  }
+
+  const haystack = projectFields.map((field) => project[field]).join(" ").toLowerCase();
+  return haystack.includes(keyword.toLowerCase());
+}
+
+function renderProjectResults() {
+  const projects = getStoredProjects().sort((a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""));
+  const keyword = document.querySelector("#projectSearchInput").value.trim();
+  const activeId = document.querySelector("#projectId").value;
+  const filtered = projects.filter((project) => projectMatchesSearch(project, keyword));
+  const results = document.querySelector("#projectResults");
+
+  document.querySelector("#projectSummary").textContent =
+    `已录入 ${projects.length} 个项目${keyword ? `，匹配 ${filtered.length} 个` : ""}`;
+
+  if (!filtered.length) {
+    results.innerHTML = `
+      <div class="project-result__meta">
+        暂无匹配项目。保存新项目后，可按 SN、医院、PN、渠道、销售或省份搜索。
+      </div>
+    `;
+    return;
+  }
+
+  results.innerHTML = filtered
+    .map((project) => `
+      <button class="project-result ${project.id === activeId ? "active" : ""}" type="button" data-project-id="${project.id}">
+        <span class="project-result__top">
+          <strong class="project-result__hospital">${project.hospitalName || "未命名医院"}</strong>
+          <span class="project-result__province">${project.installProvince || "未填省份"}</span>
+        </span>
+        <span class="project-result__meta">
+          SN：${project.serialNumber || "-"}<br/>
+          PN：${project.partNumber || "-"}<br/>
+          渠道：${project.channelName || "-"} ｜ 销售：${project.salesName || "-"}
+        </span>
+      </button>
+    `)
+    .join("");
+}
+
+function populateProvinceOptions() {
+  const provinceNames = [
+    "上海市", "浙江省", "江苏省", "广东省", "四川省", "湖北省", "湖南省", "重庆市", "福建省", "安徽省",
+    "广西壮族自治区", "云南省", "贵州省", "江西省", "海南省", "北京市", "天津市", "河北省", "山西省",
+    "内蒙古自治区", "辽宁省", "吉林省", "黑龙江省", "山东省", "河南省", "西藏自治区", "陕西省", "甘肃省",
+    "青海省", "宁夏回族自治区", "新疆维吾尔自治区"
+  ];
+  const select = document.querySelector("#installProvince");
+
+  select.innerHTML = `<option value="">请选择省份</option>${provinceNames
+    .map((province) => `<option value="${province}">${province}</option>`)
+    .join("")}`;
+}
+
+function showProjectModal() {
+  const modal = document.querySelector("#projectModal");
+  modal.hidden = false;
+  document.body.classList.add("modal-open");
+  renderProjectResults();
+  setTimeout(() => document.querySelector("#projectSearchInput").focus(), 0);
+}
+
+function hideProjectModal() {
+  document.querySelector("#projectModal").hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
+window.showProjectModal = showProjectModal;
+window.hideProjectModal = hideProjectModal;
+
+function saveProject(event) {
+  event.preventDefault();
+
+  const projects = getStoredProjects();
+  const existingId = document.querySelector("#projectId").value;
+  const data = getProjectFormData();
+  const now = new Date().toISOString();
+  const duplicate = projects.find(
+    (project) => project.serialNumber === data.serialNumber && project.id !== existingId
+  );
+
+  if (duplicate) {
+    document.querySelector("#formStatus").textContent = `SN 已存在：${duplicate.hospitalName || duplicate.serialNumber}`;
+    return;
+  }
+
+  if (existingId) {
+    const index = projects.findIndex((project) => project.id === existingId);
+    if (index >= 0) {
+      projects[index] = { ...projects[index], ...data, updatedAt: now };
+      setStoredProjects(projects);
+      setProjectFormData(projects[index]);
+    }
+  } else {
+    const project = {
+      id: `project-${Date.now()}`,
+      ...data,
+      createdAt: now,
+      updatedAt: now
+    };
+    projects.push(project);
+    setStoredProjects(projects);
+    setProjectFormData(project);
+  }
+
+  renderProjectResults();
+  document.querySelector("#formStatus").textContent = "项目已保存，可继续搜索或更新";
+}
+
+function initializeProjectRegistry() {
+  populateProvinceOptions();
+
+  document.querySelector("#openProjectModal").addEventListener("click", showProjectModal);
+  document.querySelector("#closeProjectModal").addEventListener("click", hideProjectModal);
+  document.querySelector("[data-close-project-modal]").addEventListener("click", hideProjectModal);
+  document.querySelector("#projectSearchInput").addEventListener("input", renderProjectResults);
+  document.querySelector("#projectForm").addEventListener("submit", saveProject);
+  document.querySelector("#newProjectButton").addEventListener("click", () => {
+    setProjectFormData();
+    renderProjectResults();
+    document.querySelector("#partNumber").focus();
+  });
+  document.querySelector("#projectResults").addEventListener("click", (event) => {
+    const result = event.target.closest("[data-project-id]");
+    if (!result) {
+      return;
+    }
+
+    const project = getStoredProjects().find((item) => item.id === result.dataset.projectId);
+    if (project) {
+      setProjectFormData(project);
+      renderProjectResults();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !document.querySelector("#projectModal").hidden) {
+      hideProjectModal();
+    }
+  });
+}
+
 async function renderMap() {
   const chart = echarts.init(document.querySelector("#chinaMap"));
   const chinaGeo = await fetch("assets/china.json").then((response) => response.json());
@@ -351,3 +543,4 @@ renderRanking("#partnerRanking", partners);
 renderTrendChart();
 renderTicker();
 renderMap();
+initializeProjectRegistry();

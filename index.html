@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Getinge SW China 1180 Magnus OR Table Installed Base Dashboard</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=project-registry" />
   </head>
   <body>
+    <button class="project-entry-button" id="openProjectModal" type="button" aria-haspopup="dialog" onclick="showProjectModal()">
+      <span>+</span>
+      项目录入
+    </button>
+
     <main class="dashboard-shell">
       <header class="topbar">
         <div class="brand-lockup" aria-label="Getinge SW China">
@@ -21,7 +26,7 @@
           <h1>1180 Magnus OR Table 装机看板</h1>
         </div>
         <figure class="product-visual" aria-label="1180 Magnus OR table">
-          <img src="assets/1180-magnus-table.jpg" alt="1180 Magnus OR table" />
+          <img src="assets/1180-magnus-hybrid-column.png" alt="1180 Magnus operating table system" />
         </figure>
         <div class="report-meta">
           <span>最新更新</span>
@@ -79,17 +84,6 @@
         </section>
 
         <aside class="side-column">
-          <section class="panel partner-panel">
-            <div class="panel-heading">
-              <div>
-                <p>Partner Ranking</p>
-                <h2>合作伙伴销售排名</h2>
-              </div>
-              <span class="metric-chip">按销量</span>
-            </div>
-            <div class="ranking-list" id="partnerRanking"></div>
-          </section>
-
           <section class="panel trend-panel">
             <div class="panel-heading">
               <div>
@@ -99,6 +93,17 @@
               <span class="metric-chip">月度 / 趋势</span>
             </div>
             <div id="installTrend" class="trend-chart"></div>
+          </section>
+
+          <section class="panel partner-panel">
+            <div class="panel-heading">
+              <div>
+                <p>Partner Ranking</p>
+                <h2>合作伙伴销售排名</h2>
+              </div>
+              <span class="metric-chip">按销量</span>
+            </div>
+            <div class="ranking-list" id="partnerRanking"></div>
           </section>
         </aside>
       </section>
@@ -114,7 +119,82 @@
       </footer>
     </main>
 
+    <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" hidden>
+      <div class="project-modal__backdrop" data-close-project-modal></div>
+      <section class="project-modal__panel">
+        <header class="project-modal__header">
+          <div>
+            <p>Project Registry</p>
+            <h2 id="projectModalTitle">1180 手术床项目录入与更新</h2>
+          </div>
+          <button class="icon-button" id="closeProjectModal" type="button" aria-label="关闭项目录入窗口" onclick="hideProjectModal()">×</button>
+        </header>
+
+        <div class="project-modal__body">
+          <form class="project-form" id="projectForm">
+            <input type="hidden" id="projectId" />
+            <div class="form-status" id="formStatus">新建项目</div>
+
+            <label>
+              <span>设备详细 PN</span>
+              <input id="partNumber" name="partNumber" type="text" autocomplete="off" placeholder="如 118001A..." required />
+            </label>
+            <label>
+              <span>序列号 SN</span>
+              <input id="serialNumber" name="serialNumber" type="text" autocomplete="off" placeholder="唯一序列号" required />
+            </label>
+            <label>
+              <span>装机省份</span>
+              <select id="installProvince" name="installProvince" required></select>
+            </label>
+            <label class="form-span-2">
+              <span>客户（医院）名称</span>
+              <input id="hospitalName" name="hospitalName" type="text" autocomplete="off" required />
+            </label>
+            <label>
+              <span>代理商 / 渠道</span>
+              <input id="channelName" name="channelName" type="text" autocomplete="off" required />
+            </label>
+            <label>
+              <span>Getinge 销售</span>
+              <input id="salesName" name="salesName" type="text" autocomplete="off" required />
+            </label>
+            <label>
+              <span>下单时间</span>
+              <input id="orderDate" name="orderDate" type="date" />
+            </label>
+            <label>
+              <span>交付 / 安装时间</span>
+              <input id="installDate" name="installDate" type="date" />
+            </label>
+            <label>
+              <span>验收时间</span>
+              <input id="acceptanceDate" name="acceptanceDate" type="date" />
+            </label>
+            <label>
+              <span>保修过期时间</span>
+              <input id="warrantyExpireDate" name="warrantyExpireDate" type="date" />
+            </label>
+
+            <div class="project-form__actions">
+              <button class="secondary-button" id="newProjectButton" type="button">新建空白</button>
+              <button class="primary-button" type="submit">保存项目</button>
+            </div>
+          </form>
+
+          <aside class="project-search">
+            <label class="search-field">
+              <span>搜索已录入项目</span>
+              <input id="projectSearchInput" type="search" placeholder="输入 SN、医院、PN、渠道、销售或省份" />
+            </label>
+            <div class="project-summary" id="projectSummary">已录入 0 个项目</div>
+            <div class="project-results" id="projectResults"></div>
+          </aside>
+        </div>
+      </section>
+    </div>
+
     <script src="assets/echarts.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=project-registry"></script>
   </body>
 </html>
