@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Getinge SW China 1180 Magnus OR Table Installed Base Dashboard</title>
-    <link rel="stylesheet" href="css/style.css?v=project-registry" />
+    <title>Getinge SW China Installed Base Dashboard</title>
+    <link rel="stylesheet" href="css/style.css?v=product-switcher" />
   </head>
   <body>
     <button class="project-entry-button" id="openProjectModal" type="button" aria-haspopup="dialog" onclick="showProjectModal()">
@@ -23,12 +23,24 @@
         </div>
         <div class="title-group">
           <p class="eyebrow">Installed Base Command Center</p>
-          <h1>1180 Magnus OR Table 装机看板</h1>
+          <h1 id="dashboardTitle">1180 Magnus OR Table 装机看板</h1>
         </div>
-        <figure class="product-visual" aria-label="1180 Magnus OR table">
+        <figure class="product-visual" id="productVisual" aria-label="1180 Magnus OR table">
           <img src="assets/1180-magnus-hybrid-column.png" alt="1180 Magnus operating table system" />
         </figure>
         <div class="report-meta">
+          <label class="product-switcher">
+            <span>产品看板</span>
+            <select id="productSwitcher" aria-label="切换产品看板">
+              <option value="magnus1180">1180 Magnus OR Table</option>
+              <option value="tegris">Tegris Dashboard</option>
+              <option value="icMic">IC MIC Dashboard</option>
+            </select>
+          </label>
+          <label class="product-switcher product-line-switcher" id="productLineControl" hidden>
+            <span>产品线</span>
+            <select id="productLineSwitcher" aria-label="切换 IC MIC 产品线"></select>
+          </label>
           <span>最新更新</span>
           <strong id="currentDate">2026-04-24</strong>
         </div>
@@ -38,7 +50,7 @@
         <article class="kpi">
           <span>总装机量</span>
           <strong id="totalUnits">--</strong>
-          <small>台 1180 Magnus</small>
+          <small id="totalUnitsLabel">台 1180 Magnus</small>
         </article>
         <article class="kpi">
           <span>覆盖省份</span>
@@ -62,7 +74,7 @@
           <div class="panel-heading">
             <div>
               <p>Hospital Ranking</p>
-              <h2>1180 Magnus 用户排名</h2>
+              <h2 id="userRankingTitle">1180 Magnus 用户排名</h2>
             </div>
             <span class="metric-chip">按装机量</span>
           </div>
@@ -140,6 +152,10 @@
               <input id="partNumber" name="partNumber" type="text" autocomplete="off" placeholder="如 118001A..." required />
             </label>
             <label>
+              <span>产品型号</span>
+              <select id="productModel" name="productModel" required></select>
+            </label>
+            <label>
               <span>序列号 SN</span>
               <input id="serialNumber" name="serialNumber" type="text" autocomplete="off" placeholder="唯一序列号" required />
             </label>
@@ -195,6 +211,6 @@
     </div>
 
     <script src="assets/echarts.min.js"></script>
-    <script src="js/app.js?v=project-registry"></script>
+    <script src="js/app.js?v=product-switcher"></script>
   </body>
 </html>

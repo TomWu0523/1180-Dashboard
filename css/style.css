@@ -209,14 +209,153 @@ h2 {
   justify-self: end;
   text-align: right;
   display: grid;
-  gap: 6px;
+  gap: 8px;
   color: rgba(255, 255, 255, 0.72);
   font-size: 13px;
+}
+
+.product-switcher {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+}
+
+.product-switcher span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.product-switcher select {
+  width: min(220px, 100%);
+  min-height: 38px;
+  padding: 7px 34px 7px 10px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  outline: none;
+}
+
+.product-switcher select:focus {
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.14);
+}
+
+.product-switcher option {
+  color: var(--getinge-ink);
 }
 
 .report-meta strong {
   color: var(--white);
   font-size: 20px;
+}
+
+.product-visual--system::after {
+  right: 12%;
+  left: 12%;
+}
+
+.tegris-visual {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 300px);
+  height: 160px;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 18px 24px rgba(4, 14, 34, 0.28));
+}
+
+.tegris-screen,
+.tegris-console {
+  position: absolute;
+  display: block;
+  background: linear-gradient(135deg, #f7fafb, #b8d6df);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+}
+
+.tegris-screen {
+  top: 12px;
+  left: 18px;
+  width: 150px;
+  height: 92px;
+  box-shadow: inset 0 0 0 8px rgba(24, 39, 74, 0.12);
+}
+
+.tegris-screen::after {
+  position: absolute;
+  inset: 22px 18px;
+  content: "";
+  background:
+    linear-gradient(90deg, #4ba3c7 0 34%, transparent 34% 40%, #7aa95c 40% 68%, transparent 68% 74%, #c99b4b 74%),
+    linear-gradient(#18274a, #18274a);
+  background-size: 100% 18px, 74% 5px;
+  background-position: 0 0, 0 42px;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+}
+
+.tegris-console {
+  right: 20px;
+  bottom: 18px;
+  width: 118px;
+  height: 82px;
+}
+
+.tegris-console::before,
+.tegris-console::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+}
+
+.tegris-console::before {
+  top: 18px;
+  left: 18px;
+  width: 18px;
+  height: 18px;
+  background: var(--getinge-cyan);
+}
+
+.tegris-console::after {
+  right: 18px;
+  bottom: 18px;
+  width: 46px;
+  height: 8px;
+  background: var(--getinge-navy);
+  border-radius: 999px;
+}
+
+.tegris-link {
+  position: absolute;
+  top: 82px;
+  left: 146px;
+  width: 64px;
+  height: 3px;
+  display: block;
+  background: rgba(255, 255, 255, 0.78);
+  transform: rotate(24deg);
+  transform-origin: left center;
+}
+
+.tegris-tags {
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  display: grid;
+  gap: 6px;
+}
+
+.tegris-tags b {
+  padding: 4px 8px;
+  color: var(--getinge-navy);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .kpi-strip {
@@ -779,9 +918,18 @@ h2 {
     height: 174px;
   }
 
+  .tegris-visual {
+    width: min(100%, 360px);
+    height: 174px;
+  }
+
   .report-meta {
     justify-self: start;
     text-align: left;
+  }
+
+  .product-switcher {
+    justify-items: start;
   }
 
   .main-grid {
