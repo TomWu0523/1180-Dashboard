@@ -1307,6 +1307,20 @@ const projectFields = [
 ];
 
 const formatNumber = new Intl.NumberFormat("zh-CN");
+const brandColors = {
+  blue: "#18274a",
+  snow: "#e9e4e3",
+  oat: "#d4cac8",
+  clay: "#bfb1ac",
+  cliff: "#8b7e79",
+  granite: "#595857",
+  midnight: "#495a6b",
+  ocean: "#31b7bc",
+  berry: "#e56b78",
+  sun: "#f39200",
+  grass: "#94b654",
+  white: "#ffffff"
+};
 
 function currentDashboard() {
   return dashboards[currentDashboardKey];
@@ -1535,7 +1549,7 @@ function renderTrendChart() {
       itemWidth: 10,
       itemHeight: 8,
       textStyle: {
-        color: "#4f6080",
+        color: brandColors.midnight,
         fontSize: 11
       }
     },
@@ -1543,9 +1557,9 @@ function renderTrendChart() {
       type: "category",
       data: monthlyTrend.map((item) => item.month.slice(5)),
       axisTick: { show: false },
-      axisLine: { lineStyle: { color: "#d7e2e8" } },
+      axisLine: { lineStyle: { color: brandColors.oat } },
       axisLabel: {
-        color: "#4f6080",
+        color: brandColors.midnight,
         fontSize: 11,
         interval: 1
       }
@@ -1553,9 +1567,9 @@ function renderTrendChart() {
     yAxis: {
       type: "value",
       minInterval: 1,
-      splitLine: { lineStyle: { color: "#e7eef4" } },
+      splitLine: { lineStyle: { color: "#eee9e8" } },
       axisLabel: {
-        color: "#4f6080",
+        color: brandColors.midnight,
         fontSize: 11
       }
     },
@@ -1566,7 +1580,7 @@ function renderTrendChart() {
         barWidth: 12,
         data: monthlyTrend.map((item) => item.installed),
         itemStyle: {
-          color: "#4ba3c7",
+          color: brandColors.ocean,
           borderRadius: [4, 4, 0, 0]
         }
       },
@@ -1579,11 +1593,11 @@ function renderTrendChart() {
         data: trendLine,
         lineStyle: {
           width: 3,
-          color: "#18274a"
+          color: brandColors.blue
         },
         itemStyle: {
-          color: "#18274a",
-          borderColor: "#ffffff",
+          color: brandColors.blue,
+          borderColor: brandColors.white,
           borderWidth: 2
         },
         areaStyle: {
@@ -1847,7 +1861,7 @@ async function renderMap() {
   const compact = window.innerWidth < 900;
 
   mapChart.setOption({
-    color: ["#4ba3c7", "#c99b4b"],
+    color: [brandColors.ocean, brandColors.sun],
     tooltip: {
       trigger: "item",
       borderWidth: 0,
@@ -1879,9 +1893,31 @@ async function renderMap() {
     visualMap: {
       min: 0,
       max: Math.max(1, ...provinceData.map((item) => item.value)),
-      show: false,
+      show: true,
+      left: 16,
+      bottom: 14,
+      itemWidth: 14,
+      itemHeight: 118,
+      text: ["高装机", "低装机"],
+      textStyle: {
+        color: brandColors.midnight,
+        fontSize: 11,
+        fontWeight: 700
+      },
+      calculable: true,
+      formatter(value) {
+        return `${Math.round(value)} 台`;
+      },
       inRange: {
-        color: ["#edf3f7", "#a9cedb", "#4ba3c7", "#18274a"]
+        color: [
+          brandColors.snow,
+          brandColors.oat,
+          brandColors.ocean,
+          brandColors.grass,
+          brandColors.sun,
+          brandColors.berry,
+          brandColors.blue
+        ]
       }
     },
     geo: {
@@ -1891,13 +1927,17 @@ async function renderMap() {
       top: 24,
       bottom: 10,
       itemStyle: {
-        areaColor: "#edf3f7",
-        borderColor: "#ffffff",
-        borderWidth: 1.1
+        areaColor: brandColors.snow,
+        borderColor: brandColors.white,
+        borderWidth: 1.25
       },
       emphasis: {
-        label: { color: "#18274a", fontWeight: 700 },
-        itemStyle: { areaColor: "#b8d6df" }
+        label: { color: brandColors.blue, fontWeight: 700 },
+        itemStyle: {
+          areaColor: brandColors.sun,
+          borderColor: brandColors.blue,
+          borderWidth: 1.4
+        }
       }
     },
     series: [
@@ -1916,19 +1956,19 @@ async function renderMap() {
           return compact ? Math.max(8, Math.min(15, value[2] + 2)) : Math.max(9, Math.min(22, value[2] + 5));
         },
         itemStyle: {
-          color: "#c99b4b",
-          borderColor: "#ffffff",
+          color: brandColors.sun,
+          borderColor: brandColors.white,
           borderWidth: 2,
           shadowBlur: 12,
-          shadowColor: "rgba(201, 155, 75, 0.45)"
+          shadowColor: "rgba(243, 146, 0, 0.46)"
         },
         label: {
           show: !compact,
           formatter: "{b}",
-          color: "#10203d",
+          color: brandColors.blue,
           fontSize: 10,
           position: "right",
-          backgroundColor: "rgba(255, 255, 255, 0.78)",
+          backgroundColor: "rgba(255, 255, 255, 0.84)",
           padding: [3, 5],
           borderRadius: 4
         },

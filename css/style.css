@@ -1,13 +1,21 @@
 :root {
   --getinge-navy: #18274a;
-  --getinge-bluegray: #4f6080;
+  --getinge-bluegray: #495a6b;
   --getinge-ink: #10203d;
-  --getinge-frost: #edf3f7;
-  --getinge-mist: #f7fafb;
-  --getinge-line: #d7e2e8;
-  --getinge-green: #7aa95c;
-  --getinge-cyan: #4ba3c7;
-  --warning: #c99b4b;
+  --getinge-frost: #f3f0ef;
+  --getinge-mist: #faf8f7;
+  --getinge-line: #d4cac8;
+  --getinge-snow: #e9e4e3;
+  --getinge-oat: #d4cac8;
+  --getinge-clay: #bfb1ac;
+  --getinge-cliff: #8b7e79;
+  --getinge-granite: #595857;
+  --getinge-midnight: #495a6b;
+  --getinge-ocean: #31b7bc;
+  --getinge-green: #94b654;
+  --getinge-cyan: #31b7bc;
+  --getinge-berry: #e56b78;
+  --warning: #f39200;
   --white: #ffffff;
   --shadow: 0 20px 50px rgba(24, 39, 74, 0.12);
 }
@@ -28,8 +36,8 @@ body {
     Inter, "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei",
     Arial, sans-serif;
   background:
-    linear-gradient(180deg, rgba(237, 243, 247, 0.96), rgba(247, 250, 251, 0.98)),
-    radial-gradient(circle at 80% 10%, rgba(75, 163, 199, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(243, 240, 239, 0.96), rgba(250, 248, 247, 0.98)),
+    radial-gradient(circle at 80% 10%, rgba(49, 183, 188, 0.12), transparent 32%),
     var(--getinge-mist);
 }
 
@@ -87,7 +95,7 @@ button {
 }
 
 .project-entry-button:hover {
-  background: #24375f;
+  background: var(--getinge-midnight);
 }
 
 .topbar {
@@ -98,7 +106,7 @@ button {
   gap: 22px;
   padding: 20px 24px;
   color: var(--white);
-  background: linear-gradient(120deg, var(--getinge-navy), #24375f 62%, #31506a);
+  background: linear-gradient(120deg, var(--getinge-navy), var(--getinge-midnight) 62%, var(--getinge-granite));
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
@@ -446,8 +454,8 @@ h2 {
   flex: 0 0 auto;
   padding: 6px 10px;
   color: var(--getinge-navy);
-  background: #e7eef4;
-  border: 1px solid #d4e1ea;
+  background: #f3f0ef;
+  border: 1px solid var(--getinge-oat);
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
@@ -509,14 +517,14 @@ h2 {
   height: 8px;
   margin-top: 10px;
   overflow: hidden;
-  background: #e8eef2;
+  background: #f0eceb;
   border-radius: 999px;
 }
 
 .bar-fill {
   height: 100%;
   width: var(--bar-width);
-  background: linear-gradient(90deg, var(--getinge-cyan), var(--getinge-green));
+  background: linear-gradient(90deg, var(--getinge-ocean, #31b7bc), var(--getinge-green), var(--warning));
   border-radius: inherit;
 }
 
@@ -695,7 +703,7 @@ h2 {
   gap: 18px;
   padding: 20px 22px;
   color: var(--white);
-  background: linear-gradient(120deg, var(--getinge-navy), #2f4967);
+  background: linear-gradient(120deg, var(--getinge-navy), var(--getinge-midnight));
 }
 
 .project-modal__header p {
@@ -749,7 +757,7 @@ h2 {
   align-content: start;
   gap: 14px;
   border-right: 1px solid var(--getinge-line);
-  background: #fbfdfe;
+  background: #fbfaf9;
 }
 
 .form-status {
@@ -759,8 +767,8 @@ h2 {
   align-items: center;
   padding: 10px 12px;
   color: var(--getinge-navy);
-  background: #e7eef4;
-  border: 1px solid #d4e1ea;
+  background: #f3f0ef;
+  border: 1px solid var(--getinge-oat);
   border-radius: 6px;
   font-size: 13px;
   font-weight: 760;
@@ -828,7 +836,7 @@ h2 {
 
 .secondary-button {
   color: var(--getinge-navy);
-  background: #edf3f7;
+  background: #f3f0ef;
   border: 1px solid var(--getinge-line);
 }
 
@@ -860,14 +868,14 @@ h2 {
   padding: 12px;
   color: var(--getinge-ink);
   text-align: left;
-  background: #f7fafb;
+  background: #fbfaf9;
   border: 1px solid var(--getinge-line);
   border-radius: 6px;
 }
 
 .project-result:hover {
-  border-color: #b8cfda;
-  background: #edf3f7;
+  border-color: var(--getinge-clay);
+  background: #f3f0ef;
 }
 
 .project-result.active {
