@@ -76,6 +76,13 @@ const dashboards = {
       { month: "2026-02", installed: 8 },
       { month: "2026-03", installed: 11 },
       { month: "2026-04", installed: 10 }
+    ],
+    yearlyTrend: [
+      { year: "2022", installed: 18 },
+      { year: "2023", installed: 25 },
+      { year: "2024", installed: 31 },
+      { year: "2025", installed: 38 },
+      { year: "2026", installed: 20 }
     ]
   },
   tegris: {
@@ -429,26 +436,6 @@ const dashboards = {
 ],
     monthlyTrend: [
       {
-            "month": "2024-12",
-            "installed": 0
-      },
-      {
-            "month": "2025-01",
-            "installed": 3
-      },
-      {
-            "month": "2025-02",
-            "installed": 0
-      },
-      {
-            "month": "2025-03",
-            "installed": 3
-      },
-      {
-            "month": "2025-04",
-            "installed": 0
-      },
-      {
             "month": "2025-05",
             "installed": 0
       },
@@ -475,6 +462,48 @@ const dashboards = {
       {
             "month": "2025-11",
             "installed": 3
+      },
+      {
+            "month": "2025-12",
+            "installed": 0
+      },
+      {
+            "month": "2026-01",
+            "installed": 0
+      },
+      {
+            "month": "2026-02",
+            "installed": 0
+      },
+      {
+            "month": "2026-03",
+            "installed": 0
+      },
+      {
+            "month": "2026-04",
+            "installed": 0
+      }
+],
+    yearlyTrend: [
+      {
+            "year": "2022",
+            "installed": 39
+      },
+      {
+            "year": "2023",
+            "installed": 26
+      },
+      {
+            "year": "2024",
+            "installed": 29
+      },
+      {
+            "year": "2025",
+            "installed": 16
+      },
+      {
+            "year": "2026",
+            "installed": 0
       }
 ],
     productLineData: {
@@ -751,26 +780,6 @@ const dashboards = {
       ],
       "monthlyTrend": [
             {
-                  "month": "2024-12",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-01",
-                  "installed": 3
-            },
-            {
-                  "month": "2025-02",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-03",
-                  "installed": 3
-            },
-            {
-                  "month": "2025-04",
-                  "installed": 0
-            },
-            {
                   "month": "2025-05",
                   "installed": 0
             },
@@ -797,6 +806,48 @@ const dashboards = {
             {
                   "month": "2025-11",
                   "installed": 3
+            },
+            {
+                  "month": "2025-12",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-01",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-02",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-03",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-04",
+                  "installed": 0
+            }
+      ],
+      "yearlyTrend": [
+            {
+                  "year": "2022",
+                  "installed": 18
+            },
+            {
+                  "year": "2023",
+                  "installed": 26
+            },
+            {
+                  "year": "2024",
+                  "installed": 29
+            },
+            {
+                  "year": "2025",
+                  "installed": 16
+            },
+            {
+                  "year": "2026",
+                  "installed": 0
             }
       ]
 },
@@ -1093,26 +1144,6 @@ const dashboards = {
       ],
       "monthlyTrend": [
             {
-                  "month": "2024-12",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-01",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-02",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-03",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-04",
-                  "installed": 0
-            },
-            {
                   "month": "2025-05",
                   "installed": 0
             },
@@ -1138,6 +1169,48 @@ const dashboards = {
             },
             {
                   "month": "2025-11",
+                  "installed": 0
+            },
+            {
+                  "month": "2025-12",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-01",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-02",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-03",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-04",
+                  "installed": 0
+            }
+      ],
+      "yearlyTrend": [
+            {
+                  "year": "2022",
+                  "installed": 21
+            },
+            {
+                  "year": "2023",
+                  "installed": 0
+            },
+            {
+                  "year": "2024",
+                  "installed": 0
+            },
+            {
+                  "year": "2025",
+                  "installed": 0
+            },
+            {
+                  "year": "2026",
                   "installed": 0
             }
       ]
@@ -1151,26 +1224,6 @@ const dashboards = {
       "updates": [],
       "monthlyTrend": [
             {
-                  "month": "2024-12",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-01",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-02",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-03",
-                  "installed": 0
-            },
-            {
-                  "month": "2025-04",
-                  "installed": 0
-            },
-            {
                   "month": "2025-05",
                   "installed": 0
             },
@@ -1196,6 +1249,48 @@ const dashboards = {
             },
             {
                   "month": "2025-11",
+                  "installed": 0
+            },
+            {
+                  "month": "2025-12",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-01",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-02",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-03",
+                  "installed": 0
+            },
+            {
+                  "month": "2026-04",
+                  "installed": 0
+            }
+      ],
+      "yearlyTrend": [
+            {
+                  "year": "2022",
+                  "installed": 0
+            },
+            {
+                  "year": "2023",
+                  "installed": 0
+            },
+            {
+                  "year": "2024",
+                  "installed": 0
+            },
+            {
+                  "year": "2025",
+                  "installed": 0
+            },
+            {
+                  "year": "2026",
                   "installed": 0
             }
       ]
@@ -1275,6 +1370,13 @@ const dashboards = {
       { month: "2026-02", installed: 11 },
       { month: "2026-03", installed: 15 },
       { month: "2026-04", installed: 13 }
+    ],
+    yearlyTrend: [
+      { year: "2022", installed: 24 },
+      { year: "2023", installed: 32 },
+      { year: "2024", installed: 39 },
+      { year: "2025", installed: 45 },
+      { year: "2026", installed: 25 }
     ]
   }
 };
@@ -1289,6 +1391,7 @@ const provinceNames = [
 let currentDashboardKey = "magnus1180";
 let currentProductLineKey = "all";
 let trendChart;
+let yearTrendChart;
 let mapChart;
 let chinaGeoJson;
 
@@ -1403,6 +1506,10 @@ function currentDashboardData() {
       text: item.text.replace("IC MIC", lineLabel).replace("IC 产线", `${lineLabel} 产线`).replace("MIC 设备", `${lineLabel} 设备`)
     })),
     monthlyTrend: dashboard.monthlyTrend.map((item) => ({
+      ...item,
+      installed: lineAdjustedValue(item.installed, productLine)
+    })),
+    yearlyTrend: dashboard.yearlyTrend.map((item) => ({
       ...item,
       installed: lineAdjustedValue(item.installed, productLine)
     }))
@@ -1612,6 +1719,75 @@ function renderTrendChart() {
               { offset: 1, color: "rgba(24, 39, 74, 0.02)" }
             ]
           }
+        }
+      }
+    ]
+  }, true);
+}
+
+function renderYearTrendChart() {
+  const yearlyTrend = currentDashboardData().yearlyTrend || [];
+  const target = document.querySelector("#yearInstallTrend");
+  yearTrendChart = yearTrendChart || echarts.init(target);
+  const maxValue = Math.max(1, ...yearlyTrend.map((item) => item.installed));
+
+  yearTrendChart.setOption({
+    grid: {
+      top: 24,
+      right: 12,
+      bottom: 32,
+      left: 34
+    },
+    tooltip: {
+      trigger: "axis",
+      borderWidth: 0,
+      backgroundColor: "rgba(16, 32, 61, 0.94)",
+      textStyle: { color: "#fff" },
+      axisPointer: { type: "shadow" },
+      formatter(items) {
+        const item = items[0];
+        return `<strong>${item.axisValue}</strong><br/>${item.marker}年度新增：${item.value} 台`;
+      }
+    },
+    xAxis: {
+      type: "category",
+      data: yearlyTrend.map((item) => item.year),
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: brandColors.oat } },
+      axisLabel: {
+        color: brandColors.midnight,
+        fontSize: 11
+      }
+    },
+    yAxis: {
+      type: "value",
+      minInterval: 1,
+      max: Math.ceil(maxValue * 1.18),
+      splitLine: { lineStyle: { color: "#eee9e8" } },
+      axisLabel: {
+        color: brandColors.midnight,
+        fontSize: 11
+      }
+    },
+    series: [
+      {
+        name: "年度新增",
+        type: "bar",
+        barWidth: 22,
+        data: yearlyTrend.map((item) => item.installed),
+        itemStyle: {
+          borderRadius: [5, 5, 0, 0],
+          color(params) {
+            const colors = [brandColors.oat, brandColors.ocean, brandColors.grass, brandColors.sun, brandColors.blue];
+            return colors[Math.min(params.dataIndex, colors.length - 1)];
+          }
+        },
+        label: {
+          show: true,
+          position: "top",
+          color: brandColors.blue,
+          fontSize: 11,
+          fontWeight: 700
         }
       }
     ]
@@ -1993,6 +2169,7 @@ function renderDashboard() {
   renderRanking("#userRanking", dashboard.users);
   renderRanking("#partnerRanking", dashboard.partners);
   renderTrendChart();
+  renderYearTrendChart();
   renderTicker();
   renderMap();
   populateProductModelOptions();
@@ -2016,6 +2193,7 @@ function initializeProductSwitcher() {
 
 window.addEventListener("resize", () => {
   trendChart?.resize();
+  yearTrendChart?.resize();
   mapChart?.resize();
   renderMap();
 });

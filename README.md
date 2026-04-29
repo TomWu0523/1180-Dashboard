@@ -23,6 +23,7 @@ http://localhost:8080
 - `partners`：合作伙伴销售排名
 - `updates`：底部滚动动态
 - `monthlyTrend`：近 12 个月趋势
+- `yearlyTrend`：近五年装机趋势
 - `productModels`：项目录入中的产品型号选项
 - `productLineOptions`：可选的二级产品线筛选项，例如 1180 下的 B0-B5、IC MIC 下的 S600 与 Novito
 
